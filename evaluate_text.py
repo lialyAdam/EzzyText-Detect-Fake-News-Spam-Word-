@@ -5,7 +5,6 @@ import requests
 import json
 import re
 
-# تحميل متغيرات البيئة
 load_dotenv()
 api_key = os.getenv("OPENAI_API_KEY")
 if not api_key:
@@ -13,12 +12,10 @@ if not api_key:
 
 app = Flask(__name__)
 
-# عرض الصفحة الرئيسية
 @app.route("/")
 def index():
     return render_template_string(open("index.html", encoding="utf-8").read())
 
-# تحليل النص
 @app.route("/analyze", methods=["POST"])
 def analyze():
     user_text = request.json.get("text", "")
